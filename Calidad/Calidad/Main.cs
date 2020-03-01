@@ -40,5 +40,21 @@ namespace Calidad
             editar.ShowDialog();
             this.Close();
         }
+
+        private void agregarToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            VuelosRealizados.Agregar agregar = new VuelosRealizados.Agregar();
+            this.Hide();
+            agregar.ShowDialog();
+            this.Close();
+        }
+
+        private void consultarToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            VuelosRealizados.Consultar consultar = new VuelosRealizados.Consultar();
+            this.Hide();
+            consultar.ShowDialog();
+            this.Close();
+        }
     }
 }
