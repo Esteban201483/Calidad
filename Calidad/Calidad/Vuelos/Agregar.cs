@@ -6,6 +6,10 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+using System.Configuration;
+using System.Diagnostics;
+
 
 namespace Calidad.Vuelos
 {
@@ -36,15 +40,51 @@ namespace Calidad.Vuelos
             return valido;
         }
 
+        private bool existeVuelo(string codigo)
+        {
+            bool existe = false;
+            int count = 0;
+            SqlConnection con = new SqlConnection("Data Source=DESKTOP-QUT45OF;Initial Catalog=Proyecto;Integrated Security=True");
+            //SqlConnection con = new SqlConnection("Data Source=ESTEBAN\SQLEXPRESS;Initial Catalog=proyecto;Integrated Security=True");
+            string sqlcomando = "SELECT COUNT(*) AS TOTAL FROM Vuelo WHERE codigo = '" + codigo + "'";
+            con.Open();
+            SqlCommand cmd = new SqlCommand(sqlcomando, con);
+            count = (int)cmd.ExecuteScalar();
+            con.Close();
+            if (count > 0)
+            {
+                existe = true;
+            }
+            return existe;
+        }
+
         private void buttonAceptar_Click(object sender, EventArgs e)
         {
-            if(validar() == true)
+            if (!existeVuelo(textBoxCodigo.Text))
             {
-                //Meter lógica aca xd
+                string tipo = "A";
+                if (comboBoxTipo.SelectedIndex == 1)
+                {
+                    tipo = "D";
+                }
+                SqlConnection con = new SqlConnection("Data Source=DESKTOP-QUT45OF;Initial Catalog=Proyecto;Integrated Security=True");
+                //SqlConnection con = new SqlConnection("Data Source=ESTEBAN\SQLEXPRESS;Initial Catalog=proyecto;Integrated Security=True");
+                string sqlcomando = "INSERT INTO Vuelo VALUES('" + textBoxCodigo.Text + "','"
+                                                                + textBoxCompañia.Text + "','"
+                                                                + comboBoxDia.Text + "','"
+                                                                + textBoxPais.Text + "','"
+                                                                + tipo + "',"
+                                                                + numericUpDownCapacidad.Value + "); ";
+                Debug.WriteLine(sqlcomando);
+                con.Open();
+                SqlCommand cmd = new SqlCommand(sqlcomando, con);
+                cmd.ExecuteNonQuery();
+                MessageBox.Show(sqlcomando);
+                con.Close();
             }
             else
             {
-                MessageBox.Show("Error: El valor ingresado en los campos no cumple con el formato especificado.");
+                MessageBox.Show("El vuelo ingresado ya existe");
             }
 
         }
