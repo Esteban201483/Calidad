@@ -37,10 +37,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBoxAeropuerto = new System.Windows.Forms.ComboBox();
-            this.comboBoxVuelo = new System.Windows.Forms.ComboBox();
             this.dateTimePickerFecha = new System.Windows.Forms.DateTimePicker();
             this.buttonCancelar = new System.Windows.Forms.Button();
+            this.textBoxAeropuerto = new System.Windows.Forms.TextBox();
+            this.textBoxVuelo = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPasajeros)).BeginInit();
             this.SuspendLayout();
             // 
@@ -130,24 +130,6 @@
             this.label1.Text = "Agregar Vuelo Realizado";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // comboBoxAeropuerto
-            // 
-            this.comboBoxAeropuerto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxAeropuerto.FormattingEnabled = true;
-            this.comboBoxAeropuerto.Location = new System.Drawing.Point(261, 115);
-            this.comboBoxAeropuerto.Name = "comboBoxAeropuerto";
-            this.comboBoxAeropuerto.Size = new System.Drawing.Size(278, 21);
-            this.comboBoxAeropuerto.TabIndex = 29;
-            // 
-            // comboBoxVuelo
-            // 
-            this.comboBoxVuelo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxVuelo.FormattingEnabled = true;
-            this.comboBoxVuelo.Location = new System.Drawing.Point(261, 184);
-            this.comboBoxVuelo.Name = "comboBoxVuelo";
-            this.comboBoxVuelo.Size = new System.Drawing.Size(278, 21);
-            this.comboBoxVuelo.TabIndex = 30;
-            // 
             // dateTimePickerFecha
             // 
             this.dateTimePickerFecha.Location = new System.Drawing.Point(261, 261);
@@ -165,15 +147,29 @@
             this.buttonCancelar.UseVisualStyleBackColor = true;
             this.buttonCancelar.Click += new System.EventHandler(this.buttonCancelar_Click);
             // 
+            // textBoxAeropuerto
+            // 
+            this.textBoxAeropuerto.Location = new System.Drawing.Point(261, 108);
+            this.textBoxAeropuerto.Name = "textBoxAeropuerto";
+            this.textBoxAeropuerto.Size = new System.Drawing.Size(278, 20);
+            this.textBoxAeropuerto.TabIndex = 33;
+            // 
+            // textBoxVuelo
+            // 
+            this.textBoxVuelo.Location = new System.Drawing.Point(261, 181);
+            this.textBoxVuelo.Name = "textBoxVuelo";
+            this.textBoxVuelo.Size = new System.Drawing.Size(278, 20);
+            this.textBoxVuelo.TabIndex = 34;
+            // 
             // Agregar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(680, 567);
+            this.Controls.Add(this.textBoxVuelo);
+            this.Controls.Add(this.textBoxAeropuerto);
             this.Controls.Add(this.buttonCancelar);
             this.Controls.Add(this.dateTimePickerFecha);
-            this.Controls.Add(this.comboBoxVuelo);
-            this.Controls.Add(this.comboBoxAeropuerto);
             this.Controls.Add(this.buttonAceptar);
             this.Controls.Add(this.numericUpDownPasajeros);
             this.Controls.Add(this.comboBoxTipo);
@@ -201,9 +197,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBoxAeropuerto;
-        private System.Windows.Forms.ComboBox comboBoxVuelo;
         private System.Windows.Forms.DateTimePicker dateTimePickerFecha;
         private System.Windows.Forms.Button buttonCancelar;
+        private System.Windows.Forms.TextBox textBoxAeropuerto;
+        private System.Windows.Forms.TextBox textBoxVuelo;
     }
 }

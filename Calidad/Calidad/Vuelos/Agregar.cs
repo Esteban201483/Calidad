@@ -44,8 +44,8 @@ namespace Calidad.Vuelos
         {
             bool existe = false;
             int count = 0;
-            SqlConnection con = new SqlConnection("Data Source=DESKTOP-QUT45OF;Initial Catalog=Proyecto;Integrated Security=True");
-            //SqlConnection con = new SqlConnection("Data Source=ESTEBAN\SQLEXPRESS;Initial Catalog=proyecto;Integrated Security=True");
+            //SqlConnection con = new SqlConnection("Data Source=DESKTOP-QUT45OF;Initial Catalog=Proyecto;Integrated Security=True");
+            SqlConnection con = new SqlConnection("Data Source=ESTEBAN\\SQLEXPRESS;Initial Catalog=proyecto;Integrated Security=True");
             string sqlcomando = "SELECT COUNT(*) AS TOTAL FROM Vuelo WHERE codigo = '" + codigo + "'";
             con.Open();
             SqlCommand cmd = new SqlCommand(sqlcomando, con);
@@ -67,8 +67,8 @@ namespace Calidad.Vuelos
                 {
                     tipo = "D";
                 }
-                SqlConnection con = new SqlConnection("Data Source=DESKTOP-QUT45OF;Initial Catalog=Proyecto;Integrated Security=True");
-                //SqlConnection con = new SqlConnection("Data Source=ESTEBAN\SQLEXPRESS;Initial Catalog=proyecto;Integrated Security=True");
+                //SqlConnection con = new SqlConnection("Data Source=DESKTOP-QUT45OF;Initial Catalog=Proyecto;Integrated Security=True");
+                SqlConnection con = new SqlConnection("Data Source=ESTEBAN\\SQLEXPRESS;Initial Catalog=proyecto;Integrated Security=True");
                 string sqlcomando = "INSERT INTO Vuelo VALUES('" + textBoxCodigo.Text + "','"
                                                                 + textBoxCompañia.Text + "','"
                                                                 + comboBoxDia.Text + "','"

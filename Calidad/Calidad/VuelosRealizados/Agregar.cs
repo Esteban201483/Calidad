@@ -6,6 +6,9 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+using System.Configuration;
+using System.Diagnostics;
 
 namespace Calidad.VuelosRealizados
 {
@@ -21,6 +24,44 @@ namespace Calidad.VuelosRealizados
 
         }
 
+        private bool existeVuelo(string codigo)
+        {
+            bool existe = false;
+            int count = 0;
+            //SqlConnection con = new SqlConnection("Data Source=DESKTOP-QUT45OF;Initial Catalog=Proyecto;Integrated Security=True");
+            SqlConnection con = new SqlConnection("Data Source=ESTEBAN\\SQLEXPRESS;Initial Catalog=proyecto;Integrated Security=True");
+            string sqlcomando = "SELECT COUNT(*) AS TOTAL FROM Vuelo WHERE codigo = '" + codigo + "'";
+            con.Open();
+            SqlCommand cmd = new SqlCommand(sqlcomando, con);
+            count = (int)cmd.ExecuteScalar();
+            con.Close();
+            if (count > 0)
+            {
+                existe = true;
+            }
+            return existe;
+        }
+
+        private bool existeAeropuerto(string codigo)
+        {
+            bool existe = false;
+            int count = 0;
+            //SqlConnection con = new SqlConnection("Data Source=DESKTOP-QUT45OF;Initial Catalog=Proyecto;Integrated Security=True");
+            SqlConnection con = new SqlConnection("Data Source=ESTEBAN\\SQLEXPRESS;Initial Catalog=proyecto;Integrated Security=True");
+            string sqlcomando = "SELECT COUNT(*) AS TOTAL FROM Aeropuerto WHERE codigo = '" + codigo + "'";
+            con.Open();
+            SqlCommand cmd = new SqlCommand(sqlcomando, con);
+            count = (int)cmd.ExecuteScalar();
+            con.Close();
+            if (count > 0)
+            {
+                existe = true;
+            }
+            return existe;
+        }
+
+
+
         /**
          * Verifica que todos los campos de la aplicación cumplan con el formato requerido 
          * return true si todos los campos cumplen con el formato especificado, de lo contrario false
@@ -29,9 +70,9 @@ namespace Calidad.VuelosRealizados
         {
             bool valido = true;
 
-            if (comboBoxAeropuerto.Text.Equals("") || comboBoxVuelo.Text.Equals("") || dateTimePickerFecha.Text.Equals("")
+            /*if (textBoxAeropuerto.Text.Equals("") || textBoxVuelo.Text.Equals("") || dateTimePickerFecha.Text.Equals("")
                 || numericUpDownPasajeros.Value.Equals("") || comboBoxTipo.SelectedText.Equals(""))
-                valido = false;
+                valido = false;*/
 
             return valido;
         }
@@ -40,7 +81,38 @@ namespace Calidad.VuelosRealizados
         {
             if (validar() == true)
             {
-                //Meter lógica aca xd
+                if (existeVuelo(textBoxVuelo.Text))
+                {
+                    if (existeAeropuerto(textBoxAeropuerto.Text))
+                    {
+                        string tipo = "A";
+                        if (comboBoxTipo.SelectedIndex == 1)
+                        {
+                            tipo = "D";
+                        }
+                        //SqlConnection con = new SqlConnection("Data Source=DESKTOP-QUT45OF;Initial Catalog=Proyecto;Integrated Security=True");
+                        SqlConnection con = new SqlConnection("Data Source=ESTEBAN\\SQLEXPRESS;Initial Catalog=proyecto;Integrated Security=True");
+                        string sqlcomando = "INSERT INTO Vuelo_Realizado VALUES('" + textBoxAeropuerto.Text + "','"
+                                                    + textBoxVuelo.Text + "','"
+                                                    + dateTimePickerFecha.Value.ToString("yyyy-MM-dd HH:mm:ss.fff") + "','"
+                                                    + tipo + "','"
+                                                    + numericUpDownPasajeros.Value + "'); ";
+                        Debug.WriteLine(sqlcomando);
+                        con.Open();
+                        SqlCommand cmd = new SqlCommand(sqlcomando, con);
+                        cmd.ExecuteNonQuery();
+                        MessageBox.Show(sqlcomando);
+                        con.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("El aeropuerto ingresado no existe");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("El vuelo ingresado no existe");
+                }
             }
             else
             {

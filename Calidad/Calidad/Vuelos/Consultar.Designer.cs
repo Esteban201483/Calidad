@@ -30,21 +30,23 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.proyectoEstebanDataSet = new Calidad.proyectoEstebanDataSet();
-            this.proyectoEstebanDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.vueloBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.proyectoEstebanDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.proyectoEstebanDataSet = new Calidad.proyectoEstebanDataSet();
             this.vueloTableAdapter = new Calidad.proyectoEstebanDataSetTableAdapters.VueloTableAdapter();
+            this.botonRegresar = new System.Windows.Forms.Button();
+            this.vueloBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.codigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.compañiaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.diasemanaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.paisDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.capacidadmaximaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.botonRegresar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.proyectoEstebanDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.proyectoEstebanDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vueloBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.proyectoEstebanDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.proyectoEstebanDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vueloBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -60,31 +62,46 @@
             this.paisDataGridViewTextBoxColumn,
             this.tipoDataGridViewTextBoxColumn,
             this.capacidadmaximaDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.vueloBindingSource;
+            this.dataGridView1.DataSource = this.vueloBindingSource1;
             this.dataGridView1.Location = new System.Drawing.Point(12, 12);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(644, 640);
             this.dataGridView1.TabIndex = 0;
             // 
-            // proyectoEstebanDataSet
+            // vueloBindingSource
             // 
-            this.proyectoEstebanDataSet.DataSetName = "proyectoEstebanDataSet";
-            this.proyectoEstebanDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.vueloBindingSource.DataMember = "Vuelo";
+            this.vueloBindingSource.DataSource = this.proyectoEstebanDataSetBindingSource;
             // 
             // proyectoEstebanDataSetBindingSource
             // 
             this.proyectoEstebanDataSetBindingSource.DataSource = this.proyectoEstebanDataSet;
             this.proyectoEstebanDataSetBindingSource.Position = 0;
             // 
-            // vueloBindingSource
+            // proyectoEstebanDataSet
             // 
-            this.vueloBindingSource.DataMember = "Vuelo";
-            this.vueloBindingSource.DataSource = this.proyectoEstebanDataSetBindingSource;
+            this.proyectoEstebanDataSet.DataSetName = "proyectoEstebanDataSet";
+            this.proyectoEstebanDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // vueloTableAdapter
             // 
             this.vueloTableAdapter.ClearBeforeFill = true;
+            // 
+            // botonRegresar
+            // 
+            this.botonRegresar.Location = new System.Drawing.Point(262, 658);
+            this.botonRegresar.Name = "botonRegresar";
+            this.botonRegresar.Size = new System.Drawing.Size(75, 23);
+            this.botonRegresar.TabIndex = 1;
+            this.botonRegresar.Text = "Regresar";
+            this.botonRegresar.UseVisualStyleBackColor = true;
+            this.botonRegresar.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // vueloBindingSource1
+            // 
+            this.vueloBindingSource1.DataMember = "Vuelo";
+            this.vueloBindingSource1.DataSource = this.proyectoEstebanDataSetBindingSource;
             // 
             // codigoDataGridViewTextBoxColumn
             // 
@@ -128,16 +145,6 @@
             this.capacidadmaximaDataGridViewTextBoxColumn.Name = "capacidadmaximaDataGridViewTextBoxColumn";
             this.capacidadmaximaDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // botonRegresar
-            // 
-            this.botonRegresar.Location = new System.Drawing.Point(262, 658);
-            this.botonRegresar.Name = "botonRegresar";
-            this.botonRegresar.Size = new System.Drawing.Size(75, 23);
-            this.botonRegresar.TabIndex = 1;
-            this.botonRegresar.Text = "Regresar";
-            this.botonRegresar.UseVisualStyleBackColor = true;
-            this.botonRegresar.Click += new System.EventHandler(this.button1_Click);
-            // 
             // Consultar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -150,9 +157,10 @@
             this.Text = "Consultar";
             this.Load += new System.EventHandler(this.Consultar_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.proyectoEstebanDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.proyectoEstebanDataSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.vueloBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.proyectoEstebanDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.proyectoEstebanDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vueloBindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -164,12 +172,13 @@
         private proyectoEstebanDataSet proyectoEstebanDataSet;
         private System.Windows.Forms.BindingSource vueloBindingSource;
         private proyectoEstebanDataSetTableAdapters.VueloTableAdapter vueloTableAdapter;
+        private System.Windows.Forms.Button botonRegresar;
         private System.Windows.Forms.DataGridViewTextBoxColumn codigoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn compañiaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn diasemanaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn paisDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn capacidadmaximaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Button botonRegresar;
+        private System.Windows.Forms.BindingSource vueloBindingSource1;
     }
 }
