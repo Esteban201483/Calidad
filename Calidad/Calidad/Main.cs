@@ -56,5 +56,13 @@ namespace Calidad
             consultar.ShowDialog();
             this.Close();
         }
+
+        private void modificarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Vuelos.Eliminar eliminar = new Vuelos.Eliminar();
+            this.Hide();
+            eliminar.ShowDialog();
+            this.Close();
+        }
     }
 }

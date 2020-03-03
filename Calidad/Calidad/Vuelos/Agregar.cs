@@ -40,6 +40,11 @@ namespace Calidad.Vuelos
             return valido;
         }
 
+        /// <summary>
+        /// Verifica si el vuelo existe o no en el sistema
+        /// </summary>
+        /// <param name="codigo">El código del vuelo a comprobar</param>
+        /// <returns>True Si el vuelo existe, de lo contrario false</returns>
         private bool existeVuelo(string codigo)
         {
             bool existe = false;
@@ -58,6 +63,11 @@ namespace Calidad.Vuelos
             return existe;
         }
 
+        /// <summary>
+        /// Se encarga de llamar a las validaciones y de realizar el proceso de inserción del vuelo
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonAceptar_Click(object sender, EventArgs e)
         {
             if (!existeVuelo(textBoxCodigo.Text))
@@ -79,7 +89,7 @@ namespace Calidad.Vuelos
                 con.Open();
                 SqlCommand cmd = new SqlCommand(sqlcomando, con);
                 cmd.ExecuteNonQuery();
-                MessageBox.Show(sqlcomando);
+                MessageBox.Show("El Vuelo ha sido agregado correctamente.");
                 con.Close();
             }
             else
@@ -89,6 +99,11 @@ namespace Calidad.Vuelos
 
         }
 
+        /// <summary>
+        /// Retorna al menú principal
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonCancelar_Click(object sender, EventArgs e)
         {
             Main main = new Main();

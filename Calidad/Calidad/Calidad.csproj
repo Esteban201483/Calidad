@@ -60,6 +60,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Aeropuerto\Consultar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aeropuerto\Consultar.Designer.cs">
+      <DependentUpon>Consultar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,6 +109,15 @@
     <Compile Include="Vuelos\Editar.Designer.cs">
       <DependentUpon>Editar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Vuelos\Eliminar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vuelos\Eliminar.Designer.cs">
+      <DependentUpon>Eliminar.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Aeropuerto\Consultar.resx">
+      <DependentUpon>Consultar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
@@ -129,6 +144,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Vuelos\Editar.resx">
       <DependentUpon>Editar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vuelos\Eliminar.resx">
+      <DependentUpon>Eliminar.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="Properties\Settings.settings">

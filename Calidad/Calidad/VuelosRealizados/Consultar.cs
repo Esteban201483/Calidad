@@ -25,6 +25,10 @@ namespace Calidad.VuelosRealizados
 
         }
 
+        /// <summary>
+        /// Se encarga de comprobar si el formato de los valores de los campos del formulario es el correcto
+        /// </summary>
+        /// <returns>True si el formato es el correcto</returns>
         private bool validar()
         {
             bool valido = true;
@@ -37,6 +41,12 @@ namespace Calidad.VuelosRealizados
             return valido;
         }
         
+        /// <summary>
+        /// Genera el reporte de los pasajeros que partieron de cada aeropuerto y en general
+        /// entre 2 fechas
+        /// </summary>
+        /// <param name="fecha1">Fecha inicial de pasajeros a reportar</param>
+        /// <param name="fecha2">Fecha final de pasajeros a reportar</param>
         private void pasajeros_partieron_general(String fecha1, String fecha2)
         {
             int count = 0;
@@ -63,6 +73,12 @@ namespace Calidad.VuelosRealizados
             con.Close();
         }
 
+        /// <summary>
+        /// Genera el reporte de la cantidad de pasajeros que llegaron por cada aeropuerto y en general
+        /// entre 2 fechas
+        /// </summary>
+        /// <param name="fecha1">Fecha inicial de pasajeros a reportar</param>
+        /// <param name="fecha2">Fecha final de pasajeros a reportar</param>
         private void pasajeros_llegaron_general(String fecha1, String fecha2)
         {
             int count = 0;
@@ -89,6 +105,12 @@ namespace Calidad.VuelosRealizados
             con.Close();
         }
 
+        /// <summary>
+        /// Genera el reporte de la cantidad de pasajeros que partieron por cada día de la semana
+        /// entre 2 fechas
+        /// </summary>
+        /// <param name="fecha1">Fecha inicial de pasajeros a reportar</param>
+        /// <param name="fecha2">Fecha final de pasajeros a reportar</param>
         private void pasajeros_partieron_semanal(String fecha1, String fecha2)
         {
             int count = 0;
@@ -109,13 +131,19 @@ namespace Calidad.VuelosRealizados
                 int cantidadPasajeros = Int32.Parse(reader["cantidad"].ToString());
 
                 count += cantidadPasajeros;
-                resultado += "Llegadas ocurridas el " + dia + ":\t" + cantidadPasajeros.ToString() + "\n";
+                resultado += "partidass ocurridas el " + dia + ":\t" + cantidadPasajeros.ToString() + "\n";
             }
-            resultado += "Llegadas ocurridas en general:\t" + count.ToString();
-            MessageBox.Show(resultado, "Cantidad de Pasajeros que llegaron por días de la semana");
+            resultado += "Partidas ocurridas en general:\t" + count.ToString();
+            MessageBox.Show(resultado, "Cantidad de Pasajeros que partieron por días de la semana");
             con.Close();
         }
 
+        /// <summary>
+        /// Genera el reporte de la cantidad de pasajeros que llegaron por cada día de la semana
+        /// entre 2 fechas
+        /// </summary>
+        /// <param name="fecha1">Fecha inicial de pasajeros a reportar</param>
+        /// <param name="fecha2">Fecha final de pasajeros a reportar</param>
         private void pasajeros_llegaron_semanal(String fecha1, String fecha2)
         {
             int count = 0;
@@ -136,13 +164,17 @@ namespace Calidad.VuelosRealizados
                 int cantidadPasajeros = Int32.Parse(reader["cantidad"].ToString());
 
                 count += cantidadPasajeros;
-                resultado += " Partidas ocurridas el " + dia + ":\t" + cantidadPasajeros.ToString() + "\n";
+                resultado += " Llegadas ocurridas el " + dia + ":\t" + cantidadPasajeros.ToString() + "\n";
             }
-            resultado += "Partidas ocurridas en general:\t" + count.ToString();
-            MessageBox.Show(resultado, "Cantidad de Pasajeros que partieron por días de la semana");
+            resultado += "Llegadas ocurridas en general:\t" + count.ToString();
+            MessageBox.Show(resultado, "Cantidad de Pasajeros que llegaron por días de la semana");
             con.Close();
         }
-
+        /// <summary>
+        /// Realiza las validaciones y empieza el proceso de consulta.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonBuscar_Click(object sender, EventArgs e)
         {
             if(validar() == true)
@@ -150,7 +182,7 @@ namespace Calidad.VuelosRealizados
                 string fecha1 = dateTimePicker1.Value.ToString("yyyy-MM-dd HH:mm:ss.fff");
                 string fecha2 = dateTimePicker2.Value.ToString("yyyy-MM-dd HH:mm:ss.fff");
 
-
+                //Selecciona el tipo de consulta según el valor del comboBox 
                 switch (comboBoxTipo.SelectedIndex)
                 {
                     case 0:
@@ -175,6 +207,11 @@ namespace Calidad.VuelosRealizados
             }
         }
 
+        /// <summary>
+        /// Retorna al menú principal
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonCancelar_Click(object sender, EventArgs e)
         {
             Main main = new Main();

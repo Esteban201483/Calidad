@@ -35,7 +35,6 @@
             this.textBoxPais = new System.Windows.Forms.TextBox();
             this.comboBoxDia = new System.Windows.Forms.ComboBox();
             this.textBoxCompañia = new System.Windows.Forms.TextBox();
-            this.textBoxCodigo = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -43,6 +42,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.comboBoxCodigo = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCapacidad)).BeginInit();
             this.SuspendLayout();
             // 
@@ -116,13 +116,6 @@
             this.textBoxCompañia.Size = new System.Drawing.Size(278, 20);
             this.textBoxCompañia.TabIndex = 23;
             // 
-            // textBoxCodigo
-            // 
-            this.textBoxCodigo.Location = new System.Drawing.Point(220, 111);
-            this.textBoxCodigo.Name = "textBoxCodigo";
-            this.textBoxCodigo.Size = new System.Drawing.Size(278, 20);
-            this.textBoxCodigo.TabIndex = 22;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -188,11 +181,22 @@
             this.label1.Text = "Editar Vuelo";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // comboBoxCodigo
+            // 
+            this.comboBoxCodigo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxCodigo.FormattingEnabled = true;
+            this.comboBoxCodigo.Location = new System.Drawing.Point(220, 103);
+            this.comboBoxCodigo.Name = "comboBoxCodigo";
+            this.comboBoxCodigo.Size = new System.Drawing.Size(278, 21);
+            this.comboBoxCodigo.TabIndex = 30;
+            this.comboBoxCodigo.SelectedIndexChanged += new System.EventHandler(this.comboBoxCodigo_SelectedIndexChanged);
+            // 
             // Editar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(541, 552);
+            this.Controls.Add(this.comboBoxCodigo);
             this.Controls.Add(this.buttonCancelar);
             this.Controls.Add(this.buttonAceptar);
             this.Controls.Add(this.numericUpDownCapacidad);
@@ -200,7 +204,6 @@
             this.Controls.Add(this.textBoxPais);
             this.Controls.Add(this.comboBoxDia);
             this.Controls.Add(this.textBoxCompañia);
-            this.Controls.Add(this.textBoxCodigo);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -211,6 +214,7 @@
             this.Name = "Editar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Editar";
+            this.Load += new System.EventHandler(this.Editar_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCapacidad)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -226,7 +230,6 @@
         private System.Windows.Forms.TextBox textBoxPais;
         private System.Windows.Forms.ComboBox comboBoxDia;
         private System.Windows.Forms.TextBox textBoxCompañia;
-        private System.Windows.Forms.TextBox textBoxCodigo;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
@@ -234,5 +237,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox comboBoxCodigo;
     }
 }

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Calidad.Vuelos
+namespace Calidad.Aeropuerto
 {
     public partial class Consultar : Form
     {
@@ -18,8 +18,8 @@ namespace Calidad.Vuelos
 
         private void Consultar_Load(object sender, EventArgs e)
         {
-            // TODO: esta línea de código carga datos en la tabla 'proyectoEstebanDataSet.Vuelo' Puede moverla o quitarla según sea necesario.
-            //this.vueloTableAdapter.Fill(this.proyectoEstebanDataSet.Vuelo);
+            // TODO: esta línea de código carga datos en la tabla 'proyectoEstebanDataSet.Aeropuerto' Puede moverla o quitarla según sea necesario.
+            this.aeropuertoTableAdapter.Fill(this.proyectoEstebanDataSet.Aeropuerto);
 
         }
 
@@ -28,7 +28,7 @@ namespace Calidad.Vuelos
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void button1_Click(object sender, EventArgs e)
+        private void botonRegresar_Click(object sender, EventArgs e)
         {
             Main main = new Main();
             this.Hide();

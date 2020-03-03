@@ -24,6 +24,11 @@ namespace Calidad.VuelosRealizados
 
         }
 
+        /// <summary>
+        /// Comprueba si existe o no el vuelo especificado
+        /// </summary>
+        /// <param name="codigo">El código del vuelo a verificar</param>
+        /// <returns></returns>
         private bool existeVuelo(string codigo)
         {
             bool existe = false;
@@ -42,6 +47,11 @@ namespace Calidad.VuelosRealizados
             return existe;
         }
 
+        /// <summary>
+        /// Indica si existe o no el aeropuerto específicado
+        /// </summary>
+        /// <param name="codigo">El código del aeropuerto a verificar</param>
+        /// <returns></returns>
         private bool existeAeropuerto(string codigo)
         {
             bool existe = false;
@@ -62,10 +72,10 @@ namespace Calidad.VuelosRealizados
 
 
 
-        /**
-         * Verifica que todos los campos de la aplicación cumplan con el formato requerido 
-         * return true si todos los campos cumplen con el formato especificado, de lo contrario false
-         */
+        /// <summary>
+        /// Verifica que todos los campos de la aplicación cumplan con el formato requerido 
+        /// </summary>
+        /// <returns>True si se cumple con el formato establecido</returns>
         private bool validar()
         {
             bool valido = true;
@@ -77,6 +87,11 @@ namespace Calidad.VuelosRealizados
             return valido;
         }
 
+        /// <summary>
+        /// Realiza las validaciones y el proceso de inserción de un vuelo realizado.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonAceptar_Click(object sender, EventArgs e)
         {
             if (validar() == true)
@@ -101,7 +116,7 @@ namespace Calidad.VuelosRealizados
                         con.Open();
                         SqlCommand cmd = new SqlCommand(sqlcomando, con);
                         cmd.ExecuteNonQuery();
-                        MessageBox.Show(sqlcomando);
+                        MessageBox.Show("El vuelo ha sido agregado correctamente");
                         con.Close();
                     }
                     else
@@ -120,6 +135,11 @@ namespace Calidad.VuelosRealizados
             }
         }
 
+        /// <summary>
+        /// Retorna al menú principal
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonCancelar_Click(object sender, EventArgs e)
         {
             Main main = new Main();
